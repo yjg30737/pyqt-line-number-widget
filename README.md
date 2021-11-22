@@ -41,4 +41,4 @@ if __name__ == "__main__":
 
 ## Preview
 
-![pyqtLineNumberWidgetExample](./example/pyqtLineNumberWidgetExample.mp4)
+![pyqtLineNumberWidgetExample](./example/pyqtLineNumberWidgetExample.gif)
