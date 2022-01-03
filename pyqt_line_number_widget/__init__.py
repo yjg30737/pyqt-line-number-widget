@@ -1,1 +1,1 @@
-from .pyQtLineNumberWidget import *
+from .lineNumberWidget import *

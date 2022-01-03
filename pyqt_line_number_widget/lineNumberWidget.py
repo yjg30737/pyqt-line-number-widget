@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QTextBrowser
 from PyQt5.QtCore import Qt
 
 
-class PyQtLineNumberWidget(QTextBrowser):
+class LineNumberWidget(QTextBrowser):
     def __init__(self, widget):
         super().__init__()
         self.__lineCount = widget.document().lineCount()
