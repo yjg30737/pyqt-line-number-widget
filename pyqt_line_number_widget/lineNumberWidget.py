@@ -15,7 +15,8 @@ class LineNumberWidget(QTextBrowser):
         self.setStyleSheet('QTextBrowser { background: transparent; border: none; color: #AAA }'
                            'QTextBrowser::hover { background: color: #DDD; }')
 
-        self.__setFontSizeAsPrivate(size)
+        self.setFontPointSize(size)
+        self.setFixedWidth(size*5)
 
         self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.setTextInteractionFlags(Qt.NoTextInteraction)
@@ -25,21 +26,6 @@ class LineNumberWidget(QTextBrowser):
         widget.verticalScrollBar().valueChanged.connect(self.__changeLineWidgetScrollAsTargetedWidgetScrollChanged)
 
         self.__initLineCount()
-
-    def __setFontSizeAsPrivate(self, size):
-        self.setFontPointSize(size)
-        self.setFixedWidth(size*5)
-
-    def __setFontSizeAsRatePrivate(self, size: float):
-        new_size = self.fontPointSize()*size
-
-        # font we already had
-        font = QFont(self.currentFont().family(), new_size)
-        self.setFont(font)
-
-        # font that would be added
-        self.setFontPointSize(new_size)
-        self.setFixedWidth(int(new_size)*5)
 
     def __changeLineWidgetScrollAsTargetedWidgetScrollChanged(self, v):
         self.verticalScrollBar().setValue(v)
@@ -64,9 +50,14 @@ class LineNumberWidget(QTextBrowser):
 
         self.__lineCount = n
 
-    def setFontSizeAsRate(self, size: float):
-        self.__setFontSizeAsRatePrivate(size)
-
     def setValue(self, v):
         self.verticalScrollBar().setValue(v)
 
+    def setFontPointSize(self, s: float) -> None:
+        self.selectAll()
+        super().setFontPointSize(min(s, 15.0))
+        tc = self.textCursor()
+        tc.clearSelection()
+        self.setTextCursor(tc)
+        tc = self.textCursor()
+        tc.movePosition(QTextCursor.Start)
