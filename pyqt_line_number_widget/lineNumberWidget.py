@@ -6,17 +6,12 @@ from PyQt5.QtCore import Qt
 class LineNumberWidget(QTextBrowser):
     def __init__(self, widget):
         super().__init__()
-        self.__lineCount = widget.document().lineCount()
         self.__initUi(widget)
 
     def __initUi(self, widget):
-        size = widget.font().pointSize()
-
-        self.setStyleSheet('QTextBrowser { background: transparent; border: none; color: #AAA }'
-                           'QTextBrowser::hover { background: color: #DDD; }')
-
-        self.setFontPointSize(size)
-        self.setFixedWidth(size*5)
+        self.__lineCount = widget.document().lineCount()
+        self.__size = int(widget.font().pointSizeF())
+        self.__styleInit()
 
         self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.setTextInteractionFlags(Qt.NoTextInteraction)
@@ -53,11 +48,19 @@ class LineNumberWidget(QTextBrowser):
     def setValue(self, v):
         self.verticalScrollBar().setValue(v)
 
-    def setFontPointSize(self, s: float) -> None:
-        self.selectAll()
-        super().setFontPointSize(min(s, 15.0))
-        tc = self.textCursor()
-        tc.clearSelection()
-        self.setTextCursor(tc)
-        tc = self.textCursor()
-        tc.movePosition(QTextCursor.Start)
+    def setFontSize(self, s: float):
+        self.__size = int(s)
+        self.__styleInit()
+
+    def __styleInit(self):
+        self.__style = f'''
+                       QTextBrowser 
+                       {{ 
+                       background: transparent; 
+                       border: none; 
+                       color: #AAA; 
+                       font: {self.__size}pt;
+                       }}
+                       '''
+        self.setStyleSheet(self.__style)
+        self.setFixedWidth(self.__size*5)

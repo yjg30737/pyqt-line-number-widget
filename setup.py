@@ -7,7 +7,7 @@ setup(
     author_email='yjg30737@gmail.com',
     license='MIT',
     packages=find_packages(),
-    description='Show line numbers next to QTextBrowser or QTextEdit',
+    description='QWidget which shows line numbers of QTextBrowser or QTextEdit',
     url='https://github.com/yjg30737/pyqt-line-number-widget.git',
     install_requires=[
         'PyQt5>=5.8'
