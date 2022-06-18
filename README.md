@@ -38,7 +38,3 @@ if __name__ == "__main__":
     mainWindow.show()
     app.exec()
 ```
-
-## Preview
-
-![pyqtLineNumberWidgetExample](./example/pyqtLineNumberWidgetExample.gif)
