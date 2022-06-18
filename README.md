@@ -38,3 +38,9 @@ if __name__ == "__main__":
     mainWindow.show()
     app.exec()
 ```
+
+Result
+
+https://user-images.githubusercontent.com/55078043/174435483-d6e8b57c-5b26-48fd-a5a7-454841e11d69.mp4
+
+
