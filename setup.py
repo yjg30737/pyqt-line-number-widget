@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='pyqt-line-number-widget',
-    version='0.3.0',
+    version='0.0.1',
     author='Jung Gyu Yoon',
     author_email='yjg30737@gmail.com',
     license='MIT',
