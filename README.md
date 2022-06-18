@@ -7,8 +7,8 @@ Show line numbers next to QTextBrowser or QTextEdit
 ## Setup
 `python -m pip install pyqt-line-number-widget`
 
-## Code Example
-
+## Example
+Code Sample
 ```python
 from PyQt5.QtWidgets import QApplication, QHBoxLayout, QTextEdit, QWidget
 from pyqt_line_number_widget import LineNumberWidget
