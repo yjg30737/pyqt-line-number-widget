@@ -1,6 +1,12 @@
 # pyqt-line-number-widget
 Show line numbers next to QTextBrowser or QTextEdit
 
+## Requirements
+* PyQt5 >= 5.8
+
+## Setup
+`python -m pip install pyqt-line-number-widget`
+
 ## Code Example
 
 ```python
