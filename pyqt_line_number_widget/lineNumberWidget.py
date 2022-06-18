@@ -33,12 +33,16 @@ class LineNumberWidget(QTextBrowser):
         max_one = max(self.__lineCount, n)
         diff = n-self.__lineCount
         if max_one == self.__lineCount:
+            first_v = self.verticalScrollBar().value()
             for i in range(self.__lineCount, self.__lineCount + diff, -1):
                 self.moveCursor(QTextCursor.End, QTextCursor.MoveAnchor)
                 self.moveCursor(QTextCursor.StartOfLine, QTextCursor.MoveAnchor)
                 self.moveCursor(QTextCursor.End, QTextCursor.KeepAnchor)
                 self.textCursor().removeSelectedText()
                 self.textCursor().deletePreviousChar()
+            last_v = self.verticalScrollBar().value()
+            if abs(first_v-last_v) != 2:
+                self.verticalScrollBar().setValue(first_v)
         else:
             for i in range(self.__lineCount, self.__lineCount + diff, 1):
                 self.append(str(i + 1))
